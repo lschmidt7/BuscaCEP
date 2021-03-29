@@ -5,7 +5,7 @@ import axios from 'axios'
 class NavigationBar extends Component {
 
     request(){
-        axios.get('http://localhost:4000/response')
+        axios.get('http://localhost:4000/connect')
         .then(res => {
             console.log(res.data)
         })
