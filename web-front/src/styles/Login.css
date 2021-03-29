@@ -1,0 +1,19 @@
+#login {
+    background-color: #404040;
+    padding: 4em 2em 4em 2em;
+    margin-block: 25px;
+    box-shadow: 0 0 2em black;
+}
+
+#login-title {
+    font-size: 2em;
+    color: grey;
+}
+
+.login-label {
+    color: grey;
+}
+
+.login-input {
+    text-align: center;
+}

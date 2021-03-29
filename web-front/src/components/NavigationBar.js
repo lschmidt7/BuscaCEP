@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Navbar, Button} from 'react-bootstrap'
+import {Navbar, Button, Container} from 'react-bootstrap'
 import axios from 'axios'
 
 class NavigationBar extends Component {
@@ -13,10 +13,13 @@ class NavigationBar extends Component {
 
     render()
     {
-        return <Navbar bg="dark" expand="lg">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Button onClick={() => this.request()}>Request</Button>
-        </Navbar>
+        return (
+            <Navbar bg="dark" expand="lg">
+                <Container>
+                    <Navbar.Brand href="#home">Busca CEP</Navbar.Brand>
+                </Container>
+            </Navbar>
+        )
     }
 }
 
