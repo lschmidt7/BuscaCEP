@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form,Button,Container,Image, Row} from 'react-bootstrap'
+import {Form,Button,Container,Image} from 'react-bootstrap'
 import '../styles/Login.css'
 
 class Login extends Component {
@@ -30,7 +30,7 @@ class Login extends Component {
                         <Form.Label className="login-label">Password</Form.Label>
                         <Form.Control className="login-input" type="password" placeholder="type your password..."></Form.Control>
                     </Form.Group>
-                    <Button onClick={() => this.login()} block>
+                    <Button onClick={() => this.login()} style={{ color: "white", background: "#00cc88", border: "none" }} block>
                         Login
                     </Button>
                 </Form>

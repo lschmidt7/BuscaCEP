@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Navbar, Button, Container} from 'react-bootstrap'
+import {Navbar, Container} from 'react-bootstrap'
 import axios from 'axios'
 
 class NavigationBar extends Component {
