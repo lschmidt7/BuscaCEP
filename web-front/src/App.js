@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './styles/App.css';
 import './styles/Main.css'
 import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer'
 import Login from './pages/Login';
 import Register from './pages/Register'
 import Home from './pages/Home'
@@ -11,8 +12,7 @@ import {Container,Row,Col} from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 var sectionStyle = {
@@ -28,23 +28,26 @@ class App extends Component {
         <Container id="content" fluid="true" style={sectionStyle} className="fill-window">
           <Container >
             <Row className="justify-content-md-center">
-              <Col lg="4">
-                <Router>
-                <Switch>
-                  <Route path="/login">
+              <Router>
+              <Switch>
+                <Route path="/login">
+                  <Col lg="4">
                     <Login />
-                  </Route>
-                  <Route path="/register">
+                  </Col>
+                </Route>
+                <Route path="/register">
+                  <Col lg="5">
                     <Register />
-                  </Route>
-                  <Route path="/home">
-                    <Home />
-                  </Route>
-                </Switch>
-                </Router>
-              </Col>
+                  </Col>
+                </Route>
+                <Route path="/home">
+                  <Home />
+                </Route>
+              </Switch>
+              </Router>
             </Row>
           </Container>
+          <Footer></Footer>
         </Container>
       </div>
     )

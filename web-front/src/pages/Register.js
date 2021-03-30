@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Form,Button,Container,Image} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import '../styles/Register.css'
 
 class Register extends Component {
@@ -59,8 +60,13 @@ class Register extends Component {
 
                     {/* SIGN UP BUTTON */}
                     <Button onClick={() => this.register()} style={{ color: "white", background: "#00cc88", border: "none" }} block>
-                        Login
+                        Sign Up
                     </Button>
+
+                    {/* LINK TO LOGIN */}
+                    <Form.Group style={{textAlign: 'center'}}>
+                        <Link to="/login">Already have an account?</Link>
+                    </Form.Group>
                 </Form>
             </Container>
         )

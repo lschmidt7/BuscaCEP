@@ -3,7 +3,6 @@
 
 .fill-window {
     height: 100%;
-    position: fixed;
     width: 100%;
     overflow: auto;
 }
