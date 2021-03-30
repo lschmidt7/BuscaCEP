@@ -16,7 +16,8 @@ import {
 } from "react-router-dom";
 
 var sectionStyle = {
-   backgroundImage: "url(./img/mapa.jpg)"
+   backgroundImage: "url(./img/mapa.jpg)",
+   backgroundSize: "100% 100%"
 }
 
 class App extends Component {
@@ -26,29 +27,29 @@ class App extends Component {
       <div>
         <NavigationBar />
         <Container id="content" fluid="true" style={sectionStyle} className="fill-window">
-          <Container >
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-md-center middle">
               <Router>
               <Switch>
                 <Route path="/login">
-                  <Col lg="4">
+                  <Col lg="3">
                     <Login />
                   </Col>
                 </Route>
                 <Route path="/register">
-                  <Col lg="5">
+                  <Col lg="4">
                     <Register />
                   </Col>
                 </Route>
                 <Route path="/home">
-                  <Home />
+                  <Col lg="4">
+                    <Home />
+                  </Col>
                 </Route>
               </Switch>
               </Router>
             </Row>
-          </Container>
-          <Footer></Footer>
         </Container>
+        <Footer></Footer>
       </div>
     )
   }

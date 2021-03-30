@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 
 
+
 var app = express();
 
 app.use(function (req, res, next) {
@@ -12,6 +13,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function(req, res) {
+  
   res.send('Olá Mundo!');
 });
 
@@ -29,6 +31,15 @@ app.get('/connect', function (req,res) {
   });
 })
 
+
+app.post('/cep', function(req,res){
+  const body = req.body;
+  console.log(body);
+  res.send("Informações do cep")
+})
+
+
+// SERVER LISTEN
 app.listen(4000, function() {
   console.log('App de Exemplo escutando na porta 4000!');
 });
