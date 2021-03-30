@@ -1,9 +1,9 @@
 var express = require('express');
+const bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 
-
-
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -33,8 +33,7 @@ app.get('/connect', function (req,res) {
 
 
 app.post('/cep', function(req,res){
-  const body = req.body;
-  console.log(body);
+  console.log(req.body);
   res.send("Informações do cep")
 })
 

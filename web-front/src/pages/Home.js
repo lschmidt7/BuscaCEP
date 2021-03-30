@@ -9,14 +9,14 @@ class Home extends Component {
     {
         super(props);
         this.state = {
-            cep: ''
+            cep: 'fadsfasdf'
         }
     }
 
     async search_cep()
     {
-        let payload = { cep: this.state.cep };
-        let res = await axios.post('http://localhost:4000/cep', payload);
+        let body = { body: {'cep': this.state.cep }};
+        let res = await axios.post('http://localhost:4000/cep', body);
         console.log(res.data)
     }
 
