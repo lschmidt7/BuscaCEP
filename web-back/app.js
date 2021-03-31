@@ -3,8 +3,9 @@ const bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 
 var app = express();
-app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -32,8 +33,9 @@ app.get('/connect', function (req,res) {
 })
 
 
+// PROCESS CEP
 app.post('/cep', function(req,res){
-  console.log(req.body);
+  console.log(req.body.cep);
   res.send("Informações do cep")
 })
 

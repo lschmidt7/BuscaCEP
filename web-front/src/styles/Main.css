@@ -10,3 +10,9 @@
 .middle {
     padding-block: 5%;
 }
+
+.btn {
+    color: "white";
+    background: "#00cc88";
+    border: "none";
+}
