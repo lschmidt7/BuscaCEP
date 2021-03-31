@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Container, Form, Button,Image} from 'react-bootstrap'
+import {Container, Form, Button,Image,Row,Col} from 'react-bootstrap'
 import axios from 'axios'
 import '../styles/Home.css'
 import '../styles/Geral.css'
@@ -11,7 +11,8 @@ class Home extends Component {
         super(props);
         this.state = {
             cep: '',
-            error_cep: ''
+            error_cep: '',
+            cep_info: ''
         }
         this.handleChangeCEP = this.handleChangeCEP.bind(this)
     }
@@ -25,7 +26,10 @@ class Home extends Component {
             })
             let body = {'cep': this.state.cep };
             let res = await axios.post('http://localhost:4000/cep', body);
-            console.log(res.data)
+            this.setState({
+                cep_info: res.data
+            })
+            console.log(this.state.cep_info)
         }
         else
         {
@@ -54,8 +58,34 @@ class Home extends Component {
         })
     }
 
+    capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
+    formatFields(field)
+    {
+        switch (field) {
+            case 'cep':
+                return 'CEP'
+            case 'uf':
+                return 'UF'
+            case 'ibge':
+                return 'IBGE'
+            case 'ddd':
+                return 'DDD'
+        }
+        return this.capitalize(field)
+    }
+
     render()
     {
+        let rows = []
+        let infos = this.state.cep_info
+        let keys = Object.keys(infos)
+        for( let idx in keys)
+        {
+            rows.push(<Row key={idx}> <Col className="right">{this.formatFields(keys[idx])}</Col> <Col>{infos[keys[idx]]}</Col> </Row>)
+        }
         return (
             <Container id="home">
                 <Form>
@@ -76,6 +106,11 @@ class Home extends Component {
                     </Form.Group>
                     <Button onClick = { () => this.search_cep() } style={{ color: "white", background: "#00cc88", border: "none" }} block>Search</Button>
                 </Form>
+                <Container id="cep-result" fluid="true">
+                    <hr />
+                    <h3 className="text-centered">Informations</h3>
+                    {rows}
+                </Container>
             </Container>
         )
     }

@@ -1,3 +1,11 @@
 .text-warning {
     color: yellow;
 }
+
+.text-centered {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}

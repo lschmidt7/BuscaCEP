@@ -41,7 +41,7 @@ class App extends Component {
                   </Col>
                 </Route>
                 <Route path="/home">
-                  <Col lg="4">
+                  <Col lg="3">
                     <Home />
                   </Col>
                 </Route>

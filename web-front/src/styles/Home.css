@@ -3,3 +3,11 @@
     padding: 4em 2em 4em 2em;
     box-shadow: 0 0 2em black;
 }
+
+#cep-result {
+    color: white;
+}
+
+#cep-result hr {
+    background-color: grey;
+}
