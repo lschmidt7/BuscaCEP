@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 
 var app = express();
 
+const ViaCep = require('node-viacep').default;
+
+global.fetch = require('node-fetch');
+
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -35,8 +39,15 @@ app.get('/connect', function (req,res) {
 
 // PROCESS CEP
 app.post('/cep', function(req,res){
-  console.log(req.body.cep);
-  res.send("Informações do cep")
+  let cep = req.body.cep.replace('-','')
+  console.log(cep)
+  const viacep = new ViaCep({
+    type: 'json'
+  })
+  viacep.zipCod.getZip(cep)
+  .then(data => data.text())
+  .then(data => res.send(data));
+  
 })
 
 

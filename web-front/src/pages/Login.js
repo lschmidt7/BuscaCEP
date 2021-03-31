@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Form,Button,Container,Image} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import '../styles/Login.css'
+import '../styles/Geral.css'
 
 class Login extends Component {
 
