@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
   res.send('Olá Mundo!');
 });
 
-app.get('/connect', function (req,res) {
+app.post('/register', function (req,res) {
   mongoose.connect('mongodb://localhost/busca_cep', {useNewUrlParser: true, useUnifiedTopology: true});
   const conn = mongoose.connection;
   conn.on('error', console.error.bind(console, 'connection error:'));
@@ -30,7 +30,7 @@ app.get('/connect', function (req,res) {
     console.log("conectado");
     conn.db.collection("users", function(err, collection){
       collection.find({}).toArray(function(err, data){
-          console.log(data);
+          res.send(data)
       })
     });
   });

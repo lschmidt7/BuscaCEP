@@ -3,6 +3,7 @@ import {Form,Button,Container,Image} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import '../styles/Register.css'
 import '../styles/Geral.css'
+import axios from 'axios'
 
 class Register extends Component {
 
@@ -28,26 +29,41 @@ class Register extends Component {
         this.handleChangePasswordRepeat = this.handleChangePasswordRepeat.bind(this);
     }
 
-    register()
+    fieldOk(field1, field2)
     {
-        let ok = true
+        if(field1 === field2)
+            return true
+        return false
+    }
+
+    formIsValid()
+    {
+        let valid = true
         if(!this.fieldOk(this.state.password, this.state.password_repeat))
         {
-            ok = false
+            valid = false
             this.setState({
                 password_not_equal: "Passwords are differently"
             })
         }
         if(!this.fieldOk(this.state.email, this.state.email_repeat))
         {
-            ok = false
+            valid = false
             this.setState({
                 email_not_equal: "Emails are differently"
             })
         }
-        if(ok)
+        return valid;
+    }
+
+    async register()
+    {
+        
+        if(this.formIsValid())
         {
-            console.log("All OK");
+            console.log("Registrando")
+            let res = await axios.post("http://localhost:4000/register",{dados: {}})
+            console.log(res)
         }
     }
 
@@ -57,13 +73,6 @@ class Register extends Component {
     handleChangeEmailRepeat(event){this.setState({email_repeat: event.target.value})}
     handleChangePassword(event){this.setState({password: event.target.value})}
     handleChangePasswordRepeat(event){this.setState({password_repeat: event.target.value})}
-
-    fieldOk(field1, field2)
-    {
-        if(field1 === field2)
-            return true
-        return false
-    }
 
     render()
     {

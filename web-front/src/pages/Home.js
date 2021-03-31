@@ -29,7 +29,6 @@ class Home extends Component {
             this.setState({
                 cep_info: res.data
             })
-            console.log(this.state.cep_info)
         }
         else
         {
