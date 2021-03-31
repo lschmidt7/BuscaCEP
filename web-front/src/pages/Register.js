@@ -5,9 +5,63 @@ import '../styles/Register.css'
 
 class Register extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            first_name: "",
+            last_name: "",
+            email: "",
+            email_repeat: "",
+            password: "",
+            password_repeat: "",
+            email_not_equal: "",
+            password_not_equal: ""
+        }
+
+        this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
+        this.handleChangeLastName = this.handleChangeLastName.bind(this);
+        this.handleChangeEmail = this.handleChangeEmail.bind(this);
+        this.handleChangeEmailRepeat = this.handleChangeEmailRepeat.bind(this);
+        this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleChangePasswordRepeat = this.handleChangePasswordRepeat.bind(this);
+    }
+
     register()
     {
-        console.log("cadastrando...")
+        let ok = true
+        if(!this.fieldOk(this.state.password, this.state.password_repeat))
+        {
+            ok = false
+            this.setState({
+                password_not_equal: "Passwords are differently"
+            })
+        }
+        if(!this.fieldOk(this.state.email, this.state.email_repeat))
+        {
+            ok = false
+            this.setState({
+                email_not_equal: "Emails are differently"
+            })
+        }
+        if(ok)
+        {
+            console.log("All OK");
+        }
+    }
+
+    handleChangeFirstName(event){this.setState({first_name: event.target.value})}
+    handleChangeLastName(event){this.setState({last_name: event.target.value})}
+    handleChangeEmail(event){this.setState({email: event.target.value})}
+    handleChangeEmailRepeat(event){this.setState({email_repeat: event.target.value})}
+    handleChangePassword(event){this.setState({password: event.target.value})}
+    handleChangePasswordRepeat(event){this.setState({password_repeat: event.target.value})}
+
+    fieldOk(field1, field2)
+    {
+        if(field1 === field2)
+            return true
+        return false
     }
 
     render()
@@ -30,32 +84,44 @@ class Register extends Component {
 
                     {/* NAME */}
                     <Form.Group>
-                        <Form.Label className="login-label">Nome</Form.Label>
-                        <Form.Control className="login-input" type="Nome" placeholder="type your name..."></Form.Control>
+                        <Form.Label className="login-label">First Name</Form.Label>
+                        <Form.Control className="login-input" type="Nome" placeholder="type your name..." onChange={this.handleChangeFirstName}></Form.Control>
+                    </Form.Group>
+
+                    {/* LAST NAME */}
+                    <Form.Group>
+                        <Form.Label className="login-label">Last Name</Form.Label>
+                        <Form.Control className="login-input" type="Nome" placeholder="type your name..." onChange={this.handleChangeLastName}></Form.Control>
                     </Form.Group>
 
                     {/* EMAIL */}
                     <Form.Group>
                         <Form.Label className="login-label">Email</Form.Label>
-                        <Form.Control className="login-input" type="Nome" placeholder="type your name..."></Form.Control>
+                        <Form.Control className="login-input" type="Nome" placeholder="type your name..." onChange={this.handleChangeEmail}></Form.Control>
                     </Form.Group>
 
                     {/* EMAIL REPEAT */}
                     <Form.Group>
                         <Form.Label className="login-label">Repeat the email</Form.Label>
-                        <Form.Control className="login-input" type="Nome" placeholder="type your name..."></Form.Control>
+                        <Form.Control className="login-input" type="Nome" placeholder="type your name..." onChange={this.handleChangeEmailRepeat}></Form.Control>
+                        <Form.Text className="text-warning">
+                            {this.state.email_not_equal}
+                        </Form.Text>
                     </Form.Group>
 
                     {/* PASSWORD */}
                     <Form.Group>
                         <Form.Label className="login-label">Password</Form.Label>
-                        <Form.Control className="login-input" type="password" placeholder="type your password..."></Form.Control>
+                        <Form.Control className="login-input" type="password" placeholder="type your password..." onChange={this.handleChangePassword}></Form.Control>
                     </Form.Group>
 
                     {/* PASSWORD REPEAT*/}
                     <Form.Group>
                         <Form.Label className="login-label">Repeat the password</Form.Label>
-                        <Form.Control className="login-input" type="password" placeholder="type your password..."></Form.Control>
+                        <Form.Control className="login-input" type="password" placeholder="type your password..." onChange={this.handleChangePasswordRepeat}></Form.Control>
+                        <Form.Text className="text-warning">
+                            {this.state.password_not_equal}
+                        </Form.Text>
                     </Form.Group>
 
                     {/* SIGN UP BUTTON */}
