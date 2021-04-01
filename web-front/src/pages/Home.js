@@ -105,11 +105,13 @@ class Home extends Component {
                     </Form.Group>
                     <Button onClick = { () => this.search_cep() } style={{ color: "white", background: "#00cc88", border: "none" }} block>Search</Button>
                 </Form>
-                <Container id="cep-result" fluid="true">
-                    <hr />
-                    <h3 className="text-centered">Informations</h3>
-                    {rows}
-                </Container>
+                { this.state.cep_info != '' &&
+                    <Container id="cep-result" fluid="true">
+                        <hr />
+                        <h3 className="text-centered">Informations</h3>
+                        {rows}
+                    </Container>
+                }
             </Container>
         )
     }
