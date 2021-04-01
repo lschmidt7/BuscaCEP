@@ -26,7 +26,7 @@ class App extends Component {
               <Router>
               <Switch>
                 <Route path="/login">
-                  <Col lg="3">
+                  <Col lg="4">
                     <Login />
                   </Col>
                 </Route>
@@ -36,7 +36,7 @@ class App extends Component {
                   </Col>
                 </Route>
                 <Route path="/home">
-                  <Col lg="3">
+                  <Col lg="4">
                     <Home />
                   </Col>
                 </Route>

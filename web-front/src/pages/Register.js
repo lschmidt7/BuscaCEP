@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form,Button,Container,Image} from 'react-bootstrap'
+import {Form,Button,Container,Image, Row} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import '../styles/Register.css'
 import '../styles/Geral.css'
@@ -18,7 +18,8 @@ class Register extends Component {
             password: "",
             password_repeat: "",
             email_not_equal: "",
-            password_not_equal: ""
+            password_not_equal: "",
+            result: ""
         }
 
         this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
@@ -68,9 +69,13 @@ class Register extends Component {
                 password:   this.state.password
             }
             let body = {'user': user}
-            console.log("Registrando")
             let res = await axios.post("http://localhost:4000/register",body)
-            console.log(res)
+            console.log(res.data)
+            if(res.data.inserted){
+                this.setState({
+                    result: "User registered"
+                })
+            }
         }
     }
 
@@ -85,6 +90,12 @@ class Register extends Component {
     {
         return (
             <Container id="register">
+                {this.state.result != "" && (
+                    <Row>
+                        Usuário Cadastrado
+                    </Row>
+                )}
+                {this.state.result == "" && (
                 <Form>
 
                     {/* LOGO IMAGE */}
@@ -151,6 +162,7 @@ class Register extends Component {
                         <Link to="/login">Already have an account?</Link>
                     </Form.Group>
                 </Form>
+                )}
             </Container>
         )
     }

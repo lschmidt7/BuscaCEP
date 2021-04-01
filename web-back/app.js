@@ -45,7 +45,12 @@ app.post('/register', function (req,res) {
   let user = req.body.user
   console.log(user)
   conn.db.collection("users", function(err, collection){
-    collection.insert(user)
+    collection.insertOne(user, function (err, res_query) {
+      if(res_query.result.ok == 1)
+      {
+        res.send({inserted: true})
+      }
+    })
   });
 })
 

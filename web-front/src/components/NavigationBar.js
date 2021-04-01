@@ -8,7 +8,7 @@ class NavigationBar extends Component {
         return (
             <Navbar bg="dark" expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home" style={{color: 'lightgrey'}}>Busca CEP</Navbar.Brand>
+                    <Navbar.Brand href="/home" style={{color: 'lightgrey'}}>Busca CEP</Navbar.Brand>
                 </Container>
             </Navbar>
         )
