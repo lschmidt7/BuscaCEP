@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form,Button,Container,Image, Row} from 'react-bootstrap'
+import {Form,Button,Container,Image, Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import '../styles/Register.css'
 import '../styles/Geral.css'
@@ -91,9 +91,18 @@ class Register extends Component {
         return (
             <Container id="register">
                 {this.state.result != "" && (
-                    <Row>
-                        Usuário Cadastrado
-                    </Row>
+                    <Container>
+                        <Row id="registered">
+                            <Col className="text-centered">
+                                <h3>Usuário Cadastrado</h3>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="text-centered">
+                                <Link to="/login">Go to Login page</Link>
+                            </Col>
+                        </Row>
+                    </Container>
                 )}
                 {this.state.result == "" && (
                 <Form>

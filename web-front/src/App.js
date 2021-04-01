@@ -22,7 +22,7 @@ class App extends Component {
       <div>
         <NavigationBar />
         <Container id="content" fluid="true" className="fill-window">
-            <Row className="justify-content-md-center middle">
+            <Row className="justify-content-md-center">
               <Router>
               <Switch>
                 <Route path="/login">

@@ -1,14 +1,12 @@
 #content {
+    padding-bottom: 10%;
+    padding-top: 5%;
 }
 
 .fill-window {
     height: 100%;
     width: 100%;
     overflow: hidden;
-}
-
-.middle {
-    padding-block: 5%;
 }
 
 .btn {
