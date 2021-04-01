@@ -70,7 +70,6 @@ class Register extends Component {
             }
             let body = {'user': user}
             let res = await axios.post("http://localhost:4000/register",body)
-            console.log(res.data)
             if(res.data.inserted){
                 this.setState({
                     result: "User registered"
@@ -90,7 +89,7 @@ class Register extends Component {
     {
         return (
             <Container id="register">
-                {this.state.result != "" && (
+                {this.state.result !== "" && (
                     <Container>
                         <Row id="registered">
                             <Col className="text-centered">
@@ -104,7 +103,7 @@ class Register extends Component {
                         </Row>
                     </Container>
                 )}
-                {this.state.result == "" && (
+                {this.state.result === "" && (
                 <Form>
 
                     {/* LOGO IMAGE */}

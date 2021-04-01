@@ -24,7 +24,10 @@ class Home extends Component {
             this.setState({
                 error_cep: ""
             })
-            let body = {'cep': this.state.cep };
+            let body = {
+                'cep': this.state.cep,
+                'token': localStorage.getItem("@token")
+            };
             let res = await axios.post('http://localhost:4000/cep', body);
             this.setState({
                 cep_info: res.data
@@ -49,7 +52,7 @@ class Home extends Component {
     handleChangeCEP(event)
     {
         let cep_text = event.target.value
-        if(event.nativeEvent.data!=null && cep_text.length===5){
+        if(event.nativeEvent.data !== null && cep_text.length === 5){
             cep_text = cep_text + "-"
         }
         this.setState({
@@ -72,8 +75,9 @@ class Home extends Component {
                 return 'IBGE'
             case 'ddd':
                 return 'DDD'
+            default:
+                return this.capitalize(field)
         }
-        return this.capitalize(field)
     }
 
     render()
@@ -105,7 +109,7 @@ class Home extends Component {
                     </Form.Group>
                     <Button onClick = { () => this.search_cep() } style={{ color: "white", background: "#00cc88", border: "none" }} block>Search</Button>
                 </Form>
-                { this.state.cep_info != '' &&
+                { this.state.cep_info !== '' &&
                     <Container id="cep-result" fluid="true">
                         <hr />
                         <h3 className="text-centered">Informations</h3>

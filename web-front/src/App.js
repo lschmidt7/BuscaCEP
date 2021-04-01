@@ -23,25 +23,22 @@ class App extends Component {
         <NavigationBar />
         <Container id="content" fluid="true" className="fill-window">
             <Row className="justify-content-md-center">
+              <Col lg="4">
               <Router>
+                
               <Switch>
                 <Route path="/login">
-                  <Col lg="4">
-                    <Login />
-                  </Col>
+                  <Login />
                 </Route>
                 <Route path="/register">
-                  <Col lg="4">
-                    <Register />
-                  </Col>
+                  <Register />
                 </Route>
                 <Route path="/home">
-                  <Col lg="4">
-                    <Home />
-                  </Col>
+                  <Home />
                 </Route>
               </Switch>
               </Router>
+              </Col>
             </Row>
         </Container>
         <Footer></Footer>
