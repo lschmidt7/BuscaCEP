@@ -36,6 +36,7 @@ class Login extends Component {
                 auth: res.data.auth
             })
             localStorage.setItem('@token', res.data.token);
+            window.location.reload();
         }
         
     }
@@ -58,7 +59,7 @@ class Login extends Component {
     {
         return (
             <Container id="login">
-                {localStorage.getItem("@token") == "" && 
+                {localStorage.getItem("@token") == 'null' && 
                     <Form>
                         <Form.Row className="justify-content-md-center">
                             <Image src="./img/pin-green.svg" width="150" height="150" rounded />
@@ -86,7 +87,7 @@ class Login extends Component {
                         </Form.Group>
                     </Form>
                 }
-                {localStorage.getItem("@token") != "" && 
+                {localStorage.getItem("@token") != 'null' && 
                     <Container>
                     <Row id="registered">
                         <Col className="text-centered">
