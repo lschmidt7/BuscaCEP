@@ -15,18 +15,13 @@ import {
   Route
 } from "react-router-dom";
 
-var sectionStyle = {
-   backgroundImage: "url(./img/mapa.jpg)",
-   backgroundSize: "100% 100%"
-}
-
 class App extends Component {
   render()
   {
     return (
       <div>
         <NavigationBar />
-        <Container id="content" fluid="true" style={sectionStyle} className="fill-window">
+        <Container id="content" fluid="true" className="fill-window">
             <Row className="justify-content-md-center middle">
               <Router>
               <Switch>

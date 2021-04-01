@@ -8,6 +8,7 @@ const ViaCep = require('node-viacep').default;
 
 global.fetch = require('node-fetch');
 
+
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -17,25 +18,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', function(req, res) {
-  
-  res.send('Olá Mundo!');
-});
-
-app.post('/register', function (req,res) {
-  mongoose.connect('mongodb://localhost/busca_cep', {useNewUrlParser: true, useUnifiedTopology: true});
-  const conn = mongoose.connection;
-  conn.on('error', console.error.bind(console, 'connection error:'));
-  conn.once('open', function() {
-    console.log("conectado");
-    conn.db.collection("users", function(err, collection){
-      collection.find({}).toArray(function(err, data){
-          res.send(data)
-      })
-    });
-  });
-})
-
+// CONNECT DATABASE
+mongoose.connect('mongodb://localhost/busca_cep', {useNewUrlParser: true, useUnifiedTopology: true});
+const conn = mongoose.connection;
 
 // PROCESS CEP
 app.post('/cep', function(req,res){
@@ -48,6 +33,20 @@ app.post('/cep', function(req,res){
   .then(data => data.text())
   .then(data => res.send(data));
   
+})
+
+// SIGN IN USER
+app.post('/login',function (req,res) {
+  
+})
+
+// SIGN UP USER
+app.post('/register', function (req,res) {
+  let user = req.body.user
+  console.log(user)
+  conn.db.collection("users", function(err, collection){
+    collection.insert(user)
+  });
 })
 
 

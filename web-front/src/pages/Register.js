@@ -61,8 +61,15 @@ class Register extends Component {
         
         if(this.formIsValid())
         {
+            let user = {
+                first_name: this.state.first_name,
+                last_name:  this.state.last_name,
+                email:      this.state.email,
+                password:   this.state.password
+            }
+            let body = {'user': user}
             console.log("Registrando")
-            let res = await axios.post("http://localhost:4000/register",{dados: {}})
+            let res = await axios.post("http://localhost:4000/register",body)
             console.log(res)
         }
     }
